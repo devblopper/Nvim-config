@@ -11,19 +11,22 @@ return {
       require("mason-lspconfig").setup({
 	ensure_installed = {
 	  "lua_ls",
-	  "clangd"
+	  "clangd",
+	  "cmake"
         }
       })
     end
   },
   {
     "neovim/nvim-lspconfig",
-    --config = function()
-    --  local lspconfig = require("lspconfig")
+    config = function()
+      local lspconfig = require("lspconfig")
 
     --  lspconfig.lua_ls.setup({})
-    --  lspconfig.clangd.setup({})
-    --end
+      lspconfig.clangd.setup({
+	lineLength = 120
+      })
+    end
   },
   { "hrsh7th/cmp-nvim-lsp" },
   { "saadparwaiz1/cmp_luasnip" },
@@ -37,11 +40,12 @@ return {
       local luasnip = require("luasnip")
       local lspconfig = require('lspconfig')
 
-      local servers = { 'lua_ls', 'clangd' }
+      local servers = { 'lua_ls', 'clangd', 'cmake' }
       for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 	  -- on_attach = my_custom_on_attach,
 	  capabilities = capabilities,
+	  lineLength = 120 
 	}
       end
 
@@ -52,10 +56,10 @@ return {
 	  end
 	},
 	mapping = cmp.mapping.preset.insert({
-	  ['<C-u>'] = cmp.mapping.scroll_docs(-4), -- Up
-	  ['<C-d>'] = cmp.mapping.scroll_docs(4), -- Down
+	  ['<C-k>'] = cmp.mapping.scroll_docs(-4), -- Up
+	  ['<C-j>'] = cmp.mapping.scroll_docs(4), -- Down
 	  -- C-b (back) C-f (forward) for snippet placeholder navigation.
-	  ['<C-Space>'] = cmp.mapping.complete(),
+	  ['<C-c>'] = cmp.mapping.complete(),
 	  ['<CR>'] = cmp.mapping.confirm {
 	    behavior = cmp.ConfirmBehavior.Replace,
 	    select = true,

@@ -8,6 +8,8 @@ return {
      -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
   },
   config = function()
+    vim.keymap.set("n", "<Leader>e", "<cmd>:Neotree filesystem reveal left<cr>")
+
     require("neo-tree").setup({
       close_if_last_window = true,
       popup_border_style = "rounded",
@@ -21,7 +23,7 @@ return {
         mappings = {
          ["q"] = "close_window",
         }
-      }
+      },
     })
-  end
+  end,
 }
