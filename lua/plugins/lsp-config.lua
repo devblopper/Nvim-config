@@ -17,6 +17,11 @@ return {
       })
     end
   },
+  { "folke/neodev.nvim", 
+    config = function ()
+      require("neodev").setup()
+    end
+  },
   {
     "neovim/nvim-lspconfig",
     config = function()
@@ -40,12 +45,16 @@ return {
       local luasnip = require("luasnip")
       local lspconfig = require('lspconfig')
 
-      local servers = { 'lua_ls', 'clangd', 'cmake' }
+      local servers = {
+	'lua_ls',
+	'clangd',
+	'cmake'
+      }
       for _, lsp in ipairs(servers) do
 	lspconfig[lsp].setup {
 	  -- on_attach = my_custom_on_attach,
 	  capabilities = capabilities,
-	  lineLength = 120 
+	  lineLength = 120
 	}
       end
 

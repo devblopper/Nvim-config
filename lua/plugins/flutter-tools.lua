@@ -9,8 +9,16 @@ return {
     require("flutter-tools").setup({
       lsp = {
 	settings = {
-	  lineLength = 120 
+	  lineLength = 120
 	}
+      },
+      debugger = {
+	enabled = true,
+	run_via_dap = true,
+	exception_breakpoints = {},
+      },
+      widget_guides = {
+	enabled = true
       }
     })
   end,
