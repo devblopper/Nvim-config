@@ -55,7 +55,6 @@ return {
 	}
       }
     }, { prefix = "<leader>" })
-
   end,
   opts = {
     -- your configuration comes here

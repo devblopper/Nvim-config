@@ -27,7 +27,7 @@ return {
     config = function()
       local lspconfig = require("lspconfig")
 
-    --  lspconfig.lua_ls.setup({})
+      lspconfig.lua_ls.setup({})
       lspconfig.clangd.setup({
 	lineLength = 120
       })
