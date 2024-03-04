@@ -16,27 +16,40 @@ return {
 	  g = { builtin.live_grep, "Live grep" },
 	  r = { builtin.oldfiles, "Recent files" },
 	},
+	b = {
+	  name = "Buffers",
+	  s = { builtin.buffers, "Show buffers" },
+	}
+      }, { prefix = "<leader>" })
+    end
+
+    local symbols = require('navigator.symbols');
+    local workspace = require('navigator.workspace');
+    local treesitter = require('navigator.treesitter');
+    if symbols ~= nil and workspace ~= nil and treesitter ~= nil then
+      wk.register({
+	c = {
+	  name = "Code",
+	  --s = { vim.lsp.buf.signature_help, "Signature help" },
+	  d = { vim.lsp.buf.definition, "Jump to definition" },
+	  a = { vim.lsp.buf.code_action, "Code actions" },
+	  i = { vim.lsp.buf.hover, "Code info" },
+	  f = { vim.lsp.buf.format, "Code format" },
+	  r = { vim.lsp.buf.rename, "Code rename" },
+	  k = { vim.lsp.buf.signature_help, "Signature" },
+	  s = { treesitter.buf_ts, "Symbols" },
+	  w = { workspace.workspace_symbol_live, "Workspace" },
+	  o = { "<cmd>:LspSymbols<CR>", "Outline" },
+	  e = {
+	    name = "Errors",
+	    n = { vim.diagnostic.goto_next, "Next error" },
+	    p = { vim.diagnostic.goto_prev, "Prev error" },
+	  },
+	},
       }, { prefix = "<leader>" })
     end
 
     wk.register({
-      b = {
-	name = "Buffers",
-	s = { builtin.buffers, "Show buffers" }
-      },
-      c = {
-	name = "Code",
-	d = { vim.lsp.buf.definition, "Jump to definition" },
-	a = { vim.lsp.buf.code_action, "Code actions" },
-	i = { vim.lsp.buf.hover, "Code info" },
-	f = { vim.lsp.buf.format, "Code format" },
-	r = { vim.lsp.buf.rename, "Code rename" },
-	e = {
-	  name = "Errors",
-	  n = { vim.diagnostic.goto_next, "Next error" },
-	  p = { vim.diagnostic.goto_prev, "Prev error" },
-	}
-      },
       w = {
 	name = "Window",
 	s = {

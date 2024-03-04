@@ -17,7 +17,7 @@ return {
       })
     end
   },
-  { "folke/neodev.nvim", 
+  { "folke/neodev.nvim",
     config = function ()
       require("neodev").setup()
     end
@@ -25,12 +25,12 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require("lspconfig")
+      --local lspconfig = require("lspconfig")
 
-      lspconfig.lua_ls.setup({})
-      lspconfig.clangd.setup({
-	lineLength = 120
-      })
+      --lspconfig.lua_ls.setup({})
+      --lspconfig.clangd.setup({
+      --  lineLength = 120
+      --})
     end
   },
   { "hrsh7th/cmp-nvim-lsp" },
@@ -40,14 +40,11 @@ return {
     "hrsh7th/nvim-cmp",
     config = function()
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-      local cmp = require("cmp")
-      local luasnip = require("luasnip")
       local lspconfig = require('lspconfig')
-
+--
       local servers = {
-	'lua_ls',
-	'clangd',
+--	'lua_ls',
+--	'clangd',
 	'cmake'
       }
       for _, lsp in ipairs(servers) do
@@ -57,6 +54,9 @@ return {
 	  lineLength = 120
 	}
       end
+
+      local cmp = require("cmp")
+      local luasnip = require("luasnip")
 
       cmp.setup({
 	snippet = {
